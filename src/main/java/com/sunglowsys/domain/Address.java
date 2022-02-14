@@ -5,26 +5,42 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "Address")
+@Table(name = "address")
 public class Address implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
-    @Column(name = "address_line1")
+    @Column(nullable = false)
     private String addressLine1;
-    @Column(name = "address_line2")
+
+    @Column(nullable = true)
     private String addressLine2;
-    @Column(name = "city")
+
+    @Column(nullable = false)
     private String city;
-    @Column(name = "state")
+
+    @Column(nullable = false)
     private String state;
-    @Column(name = "country")
+
+    @Column(nullable = false)
     private String country;
-    @Column(name = "zipcode")
+
+    @Column(nullable = false)
     private String zipcode;
 
+    public Address() {
+    }
+
+    public Address(Long id, String addressLine1, String addressLine2, String city, String state, String country, String zipcode) {
+        this.id = id;
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.zipcode = zipcode;
+    }
 
     public Long getId() {
         return id;
